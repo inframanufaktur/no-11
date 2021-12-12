@@ -37,7 +37,7 @@ const compile = async function (cssFileName) {
       const cssoResult = minify(css)
 
       if (cssoResult.errors) {
-        throw new Error(errors.join(', '))
+        throw new Error(cssoResult.errors.join(', '))
       }
 
       return cssoResult.css
@@ -59,7 +59,10 @@ module.exports = {
       Object.keys(sources).map(async (source) => {
         const parsed = await compile(sources[source])
 
-        results[source] = parsed
+        results[source] = {
+          permalink: `/css/${sources[source]}`,
+          parsed,
+        }
       }),
     )
 
