@@ -1,0 +1,66 @@
+{
+  "name": "ut-11ty-base",
+  "version": "0.0.1",
+  "description": "Starter template for 11ty builds",
+  "main": "index.js",
+  "scripts": {
+    "build": "ELEVENTY_ENV=production eleventy",
+    "build:clean": "npm run clean && npm run build",
+    "clean": "rimraf dist",
+    "lint": "concurrently \"npm:lint:*\"",
+    "lint:css": "stylelint '**/*.pcss' --fix",
+    "lint:js": "eslint \"_src/**/*.js\" --ignore-pattern 'node_modules/**/*' --fix",
+    "serve": "concurrently \"npm:serve:*\"",
+    "serve:11ty": "ELEVENTY_ENV=development eleventy --serve --quiet",
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/inframanufaktur/ut-11ty-base.git"
+  },
+  "author": "ovl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inframanufaktur/ut-11ty-base/issues"
+  },
+  "homepage": "https://github.com/inframanufaktur/ut-11ty-base#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0-beta.8",
+    "@11ty/eleventy-img": "^1.0.0",
+    "@11ty/eleventy-navigation": "^0.3.2",
+    "@11ty/eleventy-plugin-rss": "^1.1.2",
+    "autoprefixer": "^10.4.0",
+    "ava": "^3.15.0",
+    "concurrently": "^6.4.0",
+    "csso": "^5.0.0",
+    "eleventy-plugin-error-overlay": "^0.1.2",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "node-sass": "^7.0.0",
+    "postcss": "^8.4.4",
+    "postcss-custom-properties": "^12.0.0",
+    "postcss-import": "^14.0.2",
+    "precss": "^4.0.0",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.61.0",
+    "rollup-plugin-scss": "^3.0.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.45.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test",
+      "post-checkout": "npm run install"
+    }
+  }
+}
