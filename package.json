@@ -6,12 +6,13 @@
   "scripts": {
     "build": "ELEVENTY_ENV=production eleventy",
     "build:clean": "npm run clean && npm run build",
+    "build:debug": "npm run build --debug",
     "clean": "rimraf dist",
     "lint": "concurrently \"npm:lint:*\"",
     "lint:css": "stylelint '**/*.pcss' --fix",
     "lint:js": "eslint \"_src/**/*.js\" --ignore-pattern 'node_modules/**/*' --fix",
     "serve": "concurrently \"npm:serve:*\"",
-    "serve:11ty": "ELEVENTY_ENV=development eleventy --serve --quiet",
+    "serve:11ty": "ELEVENTY_ENV=development eleventy --serve --quiet --port 7777",
     "test": "ava"
   },
   "repository": {
