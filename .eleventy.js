@@ -1,9 +1,11 @@
-// const ErrorOverlay = require('eleventy-plugin-error-overlay')
+const plugins = require('./_plugins')
 
 const STATIC_FOLDERS = require('./_helper/paths')
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.addPlugin(ErrorOverlay)
+  plugins.forEach((plugin) => {
+    eleventyConfig.addPlugin(plugin.plugin, plugin.pluginOptions || {})
+  })
 
   eleventyConfig.addFilter('debug', function (thing) {
     console.log(thing)
