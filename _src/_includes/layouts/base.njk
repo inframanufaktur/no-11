@@ -8,10 +8,12 @@
     <title>Ultra Tendency</title>
 
     <style>
-      {{css.main | safe}}
+      {{css.main.parsed | safe}}
     </style>
   </head>
   <body>
-    {{ content | safe }}
+    <main>
+      {{ content | safe }}
+    </main>
   </body>
 </html>

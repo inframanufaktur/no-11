@@ -7,6 +7,8 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPlugin(plugin.plugin, plugin.pluginOptions || {})
   })
 
+  eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
+
   eleventyConfig.addFilter('debug', function (thing) {
     console.log(thing)
   })
