@@ -15,6 +15,9 @@
     "serve:11ty": "ELEVENTY_ENV=development eleventy --serve --quiet --port 7777",
     "test": "ava"
   },
+  "engines": {
+    "node": "16"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/inframanufaktur/ut-11ty-base.git"
@@ -44,7 +47,6 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "node-sass": "^7.0.0",
     "postcss": "^8.4.4",
@@ -61,14 +63,15 @@
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-order": "^5.0.0",
-    "stylelint-prettier": "^2.0.0"
+    "stylelint-prettier": "^2.0.0",
+    "husky": "^7.0.0"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run lint && npm run test",
-      "post-checkout": "npm run install"
-    }
+  "lint-staged": {
+    "**/*.js": [
+      "npm run lint:js"
+    ],
+    "_src/**/*.(p)?css": [
+      "npm run lint:css"
+    ]
   }
 }
