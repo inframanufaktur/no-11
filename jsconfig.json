@@ -2,11 +2,15 @@
   "include": [
     "./_src/**/*"
   ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "~components/*": [
-        "_src/_includes/components/*"
+        "./_src/_includes/components/*"
       ]
     }
   }
