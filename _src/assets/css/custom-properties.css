@@ -1,3 +1,6 @@
+@import 'open-props/src/index.css';
+@import 'open-props/src/extra/normalize.css';
+
 :root {
   --clr-base: '#001312';
 }
