@@ -4,7 +4,7 @@
   ],
   "exclude": [
     "node_modules",
-    "build"
+    "dist"
   ],
   "compilerOptions": {
     "baseUrl": ".",
