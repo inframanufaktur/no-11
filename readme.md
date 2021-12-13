@@ -45,8 +45,6 @@ Add CSS files in `./_src/assets/css/`. Afterwards you can add the entry point in
 
 💁 Compilation happens through `./_helper/compileCss.js`
 
-⚠️ Current build only supports inline styles
-
 ## Contributing
 
 This project uses [Conventional Commits](https://www.conventionalcommits.org/). Commit messages have to adhere to the specified format.
@@ -54,4 +52,4 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/). 
 ## Features of the feature
 
 - [ ] Design Tokens
-- [ ] Parse CSS files into actual files, current build only supports inline styles
+- [x] Parse CSS files into actual files, current build only supports inline styles
