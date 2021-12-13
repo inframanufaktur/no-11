@@ -13,6 +13,9 @@ module.exports = function (eleventyConfig) {
     console.log(thing)
   })
 
+  config.addWatchTarget(`./${STATIC_FOLDERS.static}**/*`)
+  config.addWatchTarget('./_helper/**/*')
+
   return {
     templateFormats: ['md', '11ty.js', 'njk'],
     htmlTemplateEngine: 'njk',
