@@ -19,10 +19,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
 
-  eleventyConfig.addFilter('debug', function (thing) {
-    console.log(thing)
-  })
-
   eleventyConfig.addWatchTarget(`./${STATIC_FOLDERS.static}**/*`)
   eleventyConfig.addWatchTarget('./_helper/**/*')
 
