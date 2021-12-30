@@ -23,8 +23,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('./_helper/**/*')
 
   // copy static assets to dist folder
-  config.addPassthroughCopy({ [`./${STATIC_FOLDERS.img}`]: '/img/' })
-  config.addPassthroughCopy({ [`./${STATIC_FOLDERS.files}`]: '/files/' })
+  eleventyConfig.addPassthroughCopy({ [`./${STATIC_FOLDERS.img}`]: '/img/' })
+  eleventyConfig.addPassthroughCopy({
+    [`./${STATIC_FOLDERS.files}`]: '/files/',
+  })
 
   return {
     templateFormats: ['md', '11ty.js', 'njk'],
