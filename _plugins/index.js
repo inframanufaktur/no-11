@@ -1,4 +1,5 @@
 const vue = require('./vue')
 const render = require('./render')
+const purge = require('./purge')
 
-module.exports = [vue, render]
+module.exports = { always: [vue, render], prod: [purge] }

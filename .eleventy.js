@@ -1,11 +1,21 @@
+const { ELEVENTY_ENV } = process.env
+
 const plugins = require('./_plugins')
 
 const STATIC_FOLDERS = require('./_helper/paths')
 
+const IS_PROD = ELEVENTY_ENV === 'production'
+
 module.exports = function (eleventyConfig) {
-  plugins.forEach((plugin) => {
+  plugins.always.forEach((plugin) => {
     eleventyConfig.addPlugin(plugin.plugin, plugin.pluginOptions || {})
   })
+
+  if (IS_PROD) {
+    plugins.prod.forEach((plugin) => {
+      eleventyConfig.addPlugin(plugin.plugin, plugins.pluginOptions || {})
+    })
+  }
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
 

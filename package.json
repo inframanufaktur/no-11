@@ -44,6 +44,7 @@
     "csso": "^5.0.0",
     "dotenv": "^10.0.0",
     "eleventy-plugin-error-overlay": "^0.1.2",
+    "eleventy-plugin-purgecss": "^0.2.0",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
