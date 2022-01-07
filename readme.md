@@ -1,4 +1,4 @@
-# Ultra Tendency 11ty Starter
+# Inframanufaktur No. 11
 
 ---
 
@@ -6,9 +6,9 @@
 
 ---
 
-This is a starter repo for websites using 11ty & Strapi.
+This is a starter repo for websites using 11ty. It is configured to use Vue, Open Props, PostCSS, and an API Service (we use Strapi, but feel free to bake in your own.)
 
-You can fork this repo to build new pages. Use it as an upstream repo to get all the new and hopefully shiny stuff.
+You can fork this repo to build new websites. Use it as an upstream repo to get all the new and hopefully shiny stuff. Or click on the Use this template button above. You won’t be able to merge upstream updates if you use this option.
 
 ## 11ty
 
@@ -51,5 +51,16 @@ This project uses [Conventional Commits](https://www.conventionalcommits.org/). 
 
 ## Features of the feature
 
-- [ ] Design Tokens
+- [ ] JavaScript Build Process
+- [ ] SEO optimisation
+- [x] Design Tokens – using [Open Props](https://open-props.style/)
 - [x] Parse CSS files into actual files, current build only supports inline styles
+
+## 🌟 Inspiration
+
+This starter contains ideas and concepts from around the around. Namely:
+
+- [eleventastic](https://github.com/maxboeck/eleventastic) by Max Böck
+- [Supermaya](https://github.com/MadeByMike/supermaya) by Mike Riethmueller
+
+Thanks also to the developers of the 11ty plugins that made us write less code. 💞
