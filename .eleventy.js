@@ -21,7 +21,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget(`./${STATIC_FOLDERS.static}**/*`)
   eleventyConfig.addWatchTarget('./_helper/**/*')
-  eleventyConfig.addWatchTarget('./_src/**/*.vue')
 
   // copy static assets to dist folder
   eleventyConfig.addPassthroughCopy({ [`./${STATIC_FOLDERS.img}`]: '/img/' })
