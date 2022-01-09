@@ -2,7 +2,7 @@ const BASE_LINK_CLASSES = 'nav__link'
 
 module.exports = {
   name: 'navLink',
-  function: function (menuItem, page, extraClasses = '') {
+  shortcodeFunction: function (menuItem, page, extraClasses = '') {
     if (typeof extraClasses !== 'string') {
       throw new Error(
         `11ty shortcode navLink: \`extraClasses\` must be a string, got ${typeof extraClasses}`,
