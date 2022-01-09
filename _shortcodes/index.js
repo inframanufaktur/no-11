@@ -1,3 +1,4 @@
 import inlineSvg from './inline-svg'
+import navLink from './nav-link'
 
-module.exports = [inlineSvg]
+module.exports = [inlineSvg, navLink]
