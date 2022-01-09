@@ -19,7 +19,7 @@ module.exports = function (eleventyConfig) {
   }
 
   shortcodes.forEach((shortcode) => {
-    eleventyConfig.addShortcode(shortcode)
+    eleventyConfig.addShortcode(shortcode.name, shortcode.funtion)
   })
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')

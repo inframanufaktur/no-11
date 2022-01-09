@@ -31,6 +31,12 @@ module.exports = {
 
 💁 `pluginOptions` will default to an empty object when calling `eleventyConfig.addPlugin`.
 
+### Shortcodes
+
+Similar to plugin, shortcodes live in `./_shortcodes`. The array in `index.js` will be added to 11ty.
+
+💁 Open improvement: Implement different types of shortcodes. Currently `.addShortcode` is used for all functions.
+
 ### Rendering
 
 You can use Vue components thanks to `@11ty/eleventy-plugin-vue` to render parts of the page. The plugin does not support Vue Layouts currently, they are still written in Nunjucks.
