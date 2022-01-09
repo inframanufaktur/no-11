@@ -1,11 +1,15 @@
 const fs = require('fs')
+const path = require('path')
 
 module.exports = {
   name: 'inlineSvg',
-  shortcodeFunction: function (path) {
-    const file = fs.readFileSync(path.resolve(process.cwd(), '_src', path), {
-      encoding: 'utf-8',
-    })
+  shortcodeFunction: function (filePath) {
+    const file = fs.readFileSync(
+      path.resolve(process.cwd(), '_src', filePath),
+      {
+        encoding: 'utf-8',
+      },
+    )
 
     return file.toString()
   },
