@@ -1,6 +1,7 @@
 const { ELEVENTY_ENV } = process.env
 
 const plugins = require('./_plugins')
+const shortcodes = require('./_shortcodes')
 
 const STATIC_FOLDERS = require('./_helper/paths')
 
@@ -16,6 +17,10 @@ module.exports = function (eleventyConfig) {
       eleventyConfig.addPlugin(plugin.plugin, plugins.pluginOptions || {})
     })
   }
+
+  shortcodes.forEach((shortcode) => {
+    eleventyConfig.addShortcode(shortcode)
+  })
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
 
