@@ -1,4 +1,4 @@
-import inlineSvg from './inline-svg'
-import navLink from './nav-link'
+const inlineSvg = require('./inline-svg')
+const navLink = require('./nav-link')
 
 module.exports = [inlineSvg, navLink]
