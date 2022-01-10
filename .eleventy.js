@@ -10,12 +10,12 @@ const IS_PROD = ELEVENTY_ENV === 'production'
 
 module.exports = function (eleventyConfig) {
   plugins.always.forEach((plugin) => {
-    eleventyConfig.addPlugin(plugin.plugin, plugin.pluginOptions || {})
+    eleventyConfig.addPlugin(plugin)
   })
 
   if (IS_PROD) {
     plugins.prod.forEach((plugin) => {
-      eleventyConfig.addPlugin(plugin.plugin, plugins.pluginOptions || {})
+      eleventyConfig.addPlugin(plugin)
     })
   }
 
