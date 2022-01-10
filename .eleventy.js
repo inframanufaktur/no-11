@@ -3,6 +3,7 @@ const { ELEVENTY_ENV } = process.env
 const plugins = require('./_plugins')
 const shortcodes = require('./_shortcodes')
 const libraries = require('./_libraries')
+const transforms = require('./_transforms')
 
 const STATIC_FOLDERS = require('./_helper/paths')
 
@@ -26,6 +27,16 @@ module.exports = function (eleventyConfig) {
   libraries.forEach(({ name, library }) => {
     eleventyConfig.setLibrary(name, library)
   })
+
+  transforms.base.forEach(({ name, transform }) => {
+    eleventyConfig.addTransform(name, transform)
+  })
+
+  if (IS_PROD) {
+    transforms.prod.forEach(({ name, transform }) => {
+      eleventyConfig.addTransform(name, transform)
+    })
+  }
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
 

@@ -1,3 +1,4 @@
 const imageTransform = require('./image-transform')
+const htmlMinify = require('./html-minify')
 
-module.exports = [imageTransform]
+module.exports = { base: [imageTransform], prod: [htmlMinify] }
