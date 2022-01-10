@@ -1,1 +1,2 @@
 *.spec.js
+_src/assets/**/*.md
