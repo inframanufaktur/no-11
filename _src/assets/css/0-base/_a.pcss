@@ -1,0 +1,12 @@
+a {
+  text-decoration: underline;
+
+  &:focus {
+    outline: 2px solid currentColor;
+    outline-offset: var(--size-1);
+  }
+}
+
+:where(a[href]):visited {
+  color: var(--link);
+}

@@ -1,1 +1,5 @@
 @import './0-base/_reset.pcss';
+@import './0-base/_universal.pcss';
+@import './0-base/_aspect-ratio.pcss';
+@import './0-base/_a.pcss';
+@import './0-base/_img.pcss';

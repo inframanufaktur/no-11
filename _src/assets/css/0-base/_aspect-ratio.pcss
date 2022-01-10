@@ -1,0 +1,31 @@
+// Credit: https://css-tricks.com/aspect-ratio-boxes/
+
+[style*='--aspect-ratio'] > :first-child {
+  width: 100%;
+}
+[style*='--aspect-ratio'] > img {
+  height: auto;
+}
+
+@supports (--custom: property) and (not (aspect-ratio: 16/9)) {
+  [style*='--aspect-ratio'] {
+    position: relative;
+  }
+  [style*='--aspect-ratio']::before {
+    content: '';
+    display: block;
+    padding-bottom: calc(100% / (var(--aspect-ratio)));
+  }
+  [style*='--aspect-ratio'] > :first-child {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+@supports (aspect-ratio: 16/9) {
+  [style*='--aspect-ratio'] {
+    aspect-ratio: var(--aspect-ratio);
+  }
+}
