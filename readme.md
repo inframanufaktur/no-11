@@ -6,9 +6,11 @@
 
 ---
 
-This is a starter repo for websites using 11ty. It is configured to use Vue, Open Props, PostCSS, and an API Service (we use Strapi, but feel free to bake in your own.)
+This is a starter repo for websites using 11ty. It is configured to use Vue, Open Props, PostCSS, and an API Service (we use Strapi, but feel free to bake in your own headless CMS, or use only local data).
 
 You can fork this repo to build new websites. Use it as an upstream repo to get all the new and hopefully shiny stuff. Or click on the Use this template button above. You won’t be able to merge upstream updates if you use this option.
+
+While this template includes many optmisations, it aims to be as adaptable as possible.
 
 ## 11ty
 
@@ -20,26 +22,52 @@ As we compile assets as part of the 11ty pipeline, the site will reload if you u
 
 ### Plugins
 
-Configure 11ty plugins in `./_plugins` and add them to the array. A plugin export should have the following format:
+Configure 11ty plugins in `./_plugins` and add them to the array. You can initiate the plugin with all necessary options and export it:
 
 ```js
-module.exports = {
-  plugin: pluginFunction,
-  pluginOptions: <Object>
-}
+module.exports = eleventyPlugin({ this: 'is fine ' })
 ```
 
-💁 `pluginOptions` will default to an empty object when calling `eleventyConfig.addPlugin`.
+Plugins are separated into two section: There are some that should always be added (e.g. Vue), and some for production optimisations.
+
+These are the default plugins.
+
+#### Base
+
+- @11ty/eleventy-plugin-vue
+- [Eleventy serverless](https://www.11ty.dev/docs/plugins/serverless/)
+
+#### Prod
+
+- eleventy-plugin-purgecss
 
 ### Shortcodes
 
-Similar to plugin, shortcodes live in `./_shortcodes`. The array in `index.js` will be added to 11ty.
+Similar to plugin, shortcodes live in `./_shortcodes`. All items in `index.js` will be added to 11ty.
 
 💁 Open improvement: Implement different types of shortcodes. Currently `.addShortcode` is used for all functions.
+
+### Transforms
+
+Same game for transforms. Like the plugins, those are split into necessary transforms and optimisations for production builds.
 
 ### Rendering
 
 You can use Vue components thanks to `@11ty/eleventy-plugin-vue` to render parts of the page. The plugin does not support Vue Layouts currently, they are still written in Nunjucks.
+
+## Markdown
+
+While 11ty ships with `markdown-it` we overwrite the default library to use an extended version. Installed plugins are:
+
+- [markdown-it-abbr](https://github.com/markdown-it/markdown-it-abbr)
+- [markdown-it-anchor](https://github.com/valeriangalliat/markdown-it-anchor)
+- [markdown-it-attribution](https://github.com/dweidner/markdown-it-attribution)
+- [markdown-it-attrs](https://github.com/arve0/markdown-it-attrs)
+- [markdown-it-container](https://github.com/markdown-it/markdown-it-container)
+- [markdown-it-footnote](https://github.com/markdown-it/markdown-it-footnote)
+- [markdown-it-prism](https://github.com/jGleitz/markdown-it-prism)
+
+The library is exported as an ES module, so that you can use it Vue components, as well as Node builds.
 
 ## Assets
 
@@ -50,6 +78,16 @@ This project is using PostCSS to bring next generation CSS into the present.
 Add CSS files in `./_src/assets/css/`. Afterwards you can add the entry point in `./_src/data/css.js`. This will make the contents of the parsed file available in the [global data cascade](https://www.11ty.dev/docs/data-global/).
 
 💁 Compilation happens through `./_helper/compileCss.js`
+
+## Tooling
+
+### Husky & lint-staged
+
+We use Husky and lint-staged for a bunch of checks. You find the scripts in `./.husky`.
+
+### Netlify
+
+If you deploy your site using Netlify, you’ll be pleased to know that [`netlify-plugin-11ty`](https://github.com/zeroby0/netlify-plugin-11ty) is installed.
 
 ## Contributing
 
