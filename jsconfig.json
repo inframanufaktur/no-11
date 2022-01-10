@@ -9,6 +9,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "~cwd/*": [
+        "./*"
+      ],
       "~components/*": [
         "./_src/_includes/components/*"
       ]

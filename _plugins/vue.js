@@ -10,6 +10,10 @@ module.exports = {
         alias({
           entries: [
             {
+              find: '~cwd',
+              replacement: path.resolve(process.cwd()),
+            },
+            {
               find: '~components',
               replacement: path.join(
                 process.cwd(),
