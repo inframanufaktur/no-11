@@ -6,6 +6,15 @@ module.exports = {
   plugin: eleventyVue,
   pluginOptions: {
     rollupOptions: {
+      external: [
+        'markdown-it',
+        'markdown-it-anchor',
+        'markdown-it-prism',
+        'markdown-it-footnote',
+        'markdown-it-abbr',
+        'markdown-it-attribution',
+        'markdown-it-container',
+      ],
       plugins: [
         alias({
           entries: [
