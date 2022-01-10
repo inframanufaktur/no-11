@@ -10,7 +10,7 @@
     "clean": "rimraf dist",
     "lint": "concurrently \"npm:lint:*\"",
     "lint:css": "stylelint '**/*.pcss' --fix",
-    "lint:js": "eslint \"_src/**/*.js\" --ignore-pattern 'node_modules/**/*' --fix",
+    "lint:js": "eslint \"**/*.{js,vue,mjs}\" --ignore-pattern 'node_modules/**/*' --fix",
     "serve": "ELEVENTY_ENV=development eleventy --serve --quiet --port 7777",
     "test": "ava",
     "prepare": "husky install"
