@@ -13,7 +13,8 @@
     "lint:js": "eslint \"_src/**/*.js\" --ignore-pattern 'node_modules/**/*' --fix",
     "serve": "concurrently \"npm:serve:*\"",
     "serve:11ty": "ELEVENTY_ENV=development eleventy --serve --quiet --incremental --port 7777",
-    "test": "ava"
+    "test": "ava",
+    "prepare": "husky install"
   },
   "engines": {
     "node": "16"
