@@ -77,7 +77,7 @@
     "stylelint-prettier": "^2.0.0"
   },
   "lint-staged": {
-    "**/*.js": [
+    "**/*.{js,vue,mjs}": [
       "npm run lint:js"
     ],
     "_src/**/*.(p)?css": [
