@@ -5,6 +5,7 @@ import footnotes from 'markdown-it-footnote'
 import abbr from 'markdown-it-abbr'
 import attribution from 'markdown-it-attribution'
 import container from 'markdown-it-container'
+import attrs from 'markdown-it-attrs'
 
 const markdown = md({
   html: true,
@@ -21,6 +22,7 @@ markdown.use(attribution, {
   marker: '--',
   removeMarker: true,
 })
+markdown.use(attrs)
 
 markdown.renderer.rules.footnote_block_open = () =>
   '<section class="footnotes">\n' +
