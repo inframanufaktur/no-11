@@ -2,23 +2,25 @@ const BASE_LINK_CLASSES = 'nav__link'
 
 module.exports = {
   name: 'navLink',
-  shortcodeFunction: function (menuItem, page, extraClasses = '') {
+  shortcodeFunction: function (menuItem, extraClasses = '') {
+    const { url } = this.page
+
     if (typeof extraClasses !== 'string') {
       throw new Error(
         `11ty shortcode navLink: \`extraClasses\` must be a string, got ${typeof extraClasses}`,
       )
     }
 
-    let ariaCurrent = page.url === menuItem.url ? 'aria-current="page"' : ''
+    let ariaCurrent = url === menuItem.url ? 'aria-current="page"' : ''
     let linkClasses = extraClasses
       ? `${BASE_LINK_CLASSES} ${extraClasses.trim()}`
       : BASE_LINK_CLASSES
 
-    if (page.url.includes(menuItem.url) && !menuItem.exact) {
+    if (url.includes(menuItem.url) && !menuItem.exact) {
       linkClasses += ' -is-active'
     }
 
-    if (page.url === menuItem.url && menuItem.exact) {
+    if (url === menuItem.url && menuItem.exact) {
       linkClasses += ' -is-active'
     }
 
