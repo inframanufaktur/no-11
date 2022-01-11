@@ -1,3 +1,3 @@
 const { EleventyRenderPlugin } = require('@11ty/eleventy')
 
-module.exports = EleventyRenderPlugin
+module.exports = { plugin: EleventyRenderPlugin }
