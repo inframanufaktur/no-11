@@ -39,11 +39,10 @@ module.exports = {
 
       for (const img of images) {
         const src = img.getAttribute('src')
-        const { imgSizes, imgWidths } = img.dataset
+        const { imageSizes: sizes, imageWidths } = img.dataset
 
-        const sizes = imgSizes
         // data-image-widths should be something along the lines of `data-image-widths="[300, 600, 900]"`
-        const widths = imgWidths && JSON.parse(imgWidths)
+        const widths = imageWidths && JSON.parse(imageWidths)
 
         const options = {
           ...defaultOptions,
@@ -70,7 +69,7 @@ module.exports = {
           <picture>
             ${options.formats
               .map((format) => {
-                ;`<source type="image/${format}" sizes="${
+                return `<source type="image/${format}" sizes="${
                   options.sizes
                 }" srcset="${meta[format].map((p) => p.srcset).join(', ')}">`
               })
