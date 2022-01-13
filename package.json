@@ -81,10 +81,10 @@
   },
   "lint-staged": {
     "**/*.{js,vue,mjs}": [
-      "npm run lint:js"
+      "eslint --fix"
     ],
     "_src/**/*.(p)?css": [
-      "npm run lint:css"
+      "stylelint --fix"
     ]
   }
 }
