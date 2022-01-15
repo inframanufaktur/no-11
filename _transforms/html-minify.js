@@ -10,6 +10,7 @@ module.exports = {
           removeComments: true,
           collapseWhitespace: true,
         })
+
         return minified
       }
 
