@@ -32,6 +32,12 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addTransform(name, transform)
   })
 
+  if (!IS_PROD) {
+    transforms.dev.forEach(({ name, transform }) => {
+      eleventyConfig.addTransform(name, transform)
+    })
+  }
+
   if (IS_PROD) {
     transforms.prod.forEach(({ name, transform }) => {
       eleventyConfig.addTransform(name, transform)
