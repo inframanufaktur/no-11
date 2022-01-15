@@ -11,21 +11,17 @@ const cssPath = path.join(process.cwd(), STATIC_FOLDERS.css)
 
 const partials = {}
 
-fs.readdir(cssPath, function (err, files) {
-  if (err) {
-    throw new Error('Unable to scan directory: ' + err)
+fs.readdirSync(cssPath).forEach(function (fileName) {
+  if (fileName.endsWith('.css')) {
+    const property = camelCase(fileName.replace('.css', ''))
+
+    Object.defineProperty(partials, property, {
+      value: fileName,
+      enumerable: true,
+      writable: true,
+      configurable: true,
+    })
   }
-
-  files.forEach(function (fileName) {
-    if (fileName.endsWith('.css')) {
-      const property = camelCase(fileName.replace('.css', ''))
-
-      Object.defineProperty(partials, property, {
-        value: fileName,
-        enumerable: true,
-      })
-    }
-  })
 })
 
 module.exports = compileCss(partials)
