@@ -5,6 +5,8 @@ const postcssImport = require('postcss-import')
 const postcssCustomProperties = require('postcss-custom-properties')
 const precss = require('precss')
 const autoprefixer = require('autoprefixer')
+const postcssJitProps = require('postcss-jit-props')
+const OpenProps = require('open-props')
 const { minify } = require('csso')
 
 const STATIC_FOLDERS = require('./paths')
@@ -14,12 +16,15 @@ const propertiesPath = path.join(
   'custom-properties.css',
 )
 
-const compiler = postcss([
+let PLUGINS = [
   postcssImport,
   precss,
   postcssCustomProperties({ importFrom: propertiesPath }),
+  postcssJitProps(OpenProps),
   autoprefixer,
-])
+]
+
+const compiler = postcss(PLUGINS)
 
 const IS_PROD = process.env.ELEVENTY_ENV === 'production'
 
