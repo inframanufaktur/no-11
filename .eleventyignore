@@ -1,2 +1,3 @@
 *.spec.js
 _src/assets/**/*.md
+.DS_Store
