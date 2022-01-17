@@ -4,6 +4,7 @@ const postcss = require('postcss')
 const postcssImport = require('postcss-import')
 const postcssCustomProperties = require('postcss-custom-properties')
 const precss = require('precss')
+const postcssMixins = require('postcss-mixins')
 const autoprefixer = require('autoprefixer')
 const postcssJitProps = require('postcss-jit-props')
 const OpenProps = require('open-props')
@@ -18,6 +19,9 @@ const propertiesPath = path.join(
 
 let PLUGINS = [
   postcssImport,
+  postcssMixins({
+    mixinsDir: path.join(__dirname, 'postcss/mixins/'),
+  }),
   precss,
   postcssCustomProperties({ importFrom: propertiesPath }),
   postcssJitProps(OpenProps),

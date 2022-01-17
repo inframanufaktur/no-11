@@ -66,6 +66,7 @@
     "postcss-custom-properties": "^12.1.2",
     "postcss-import": "^14.0.2",
     "postcss-jit-props": "^1.0.4",
+    "postcss-mixins": "^9.0.1",
     "precss": "^4.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
@@ -86,5 +87,8 @@
     "_src/**/*.(p)?css": [
       "stylelint --fix"
     ]
+  },
+  "dependencies": {
+    "@netlify/functions": "^0.10.0"
   }
 }

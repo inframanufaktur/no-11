@@ -1,0 +1,11 @@
+@define-mixin dark-mode {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-user-theme]) & {
+      @mixin-content;
+    }
+  }
+
+  :root[data-user-theme='dark'] & {
+    @mixin-content;
+  }
+}
