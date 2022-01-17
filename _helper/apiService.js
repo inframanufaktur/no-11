@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const { API_HOST, API_KEY, ELEVENTY_ENV } = process.env
+const { API_HOST, API_KEY, API_STAGE } = process.env
 
 const axios = require('axios')
 
@@ -13,7 +13,7 @@ const apiService = axios.create({
 
 apiService.interceptors.request.use(
   async (config) => {
-    if (ELEVENTY_ENV !== 'production') {
+    if (API_STAGE === 'preview') {
       config.url = `${config.url}&publicationState=preview`
     }
 
