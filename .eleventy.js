@@ -1,5 +1,6 @@
 const { ELEVENTY_ENV } = process.env
 
+const functions = require('./_functions')
 const plugins = require('./_plugins')
 const shortcodes = require('./_shortcodes')
 const libraries = require('./_libraries')
@@ -22,6 +23,10 @@ module.exports = function (eleventyConfig) {
 
   shortcodes.forEach((shortcode) => {
     eleventyConfig.addShortcode(shortcode.name, shortcode.shortcodeFunction)
+  })
+
+  functions.forEach(({ name, func }) => {
+    eleventyConfig.addJavaScriptFunction(name, func)
   })
 
   libraries.forEach(({ name, library }) => {
