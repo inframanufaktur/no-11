@@ -8,9 +8,9 @@
 
 This is a starter repo for websites using 11ty. It is configured to use Vue, Open Props, PostCSS, and an API Service (we use Strapi, but feel free to bake in your own headless CMS, or use only local data).
 
-You can fork this repo to build new websites. Use it as an upstream repo to get all the new and hopefully shiny stuff. Or click on the Use this template button above. You won’t be able to merge upstream updates if you use this option.
+You can fork this repo to build new websites. Use it as an upstream repo to get all the new and – hopefully – shiny stuff. Or use the _Use this template_ button in the repository menu. You won’t be able to merge upstream updates if you use this option.
 
-While this template includes many optmisations, it aims to be as adaptable as possible.
+While this template includes some optimisations, it aims to be as adaptable as possible.
 
 ## 11ty
 
@@ -73,11 +73,11 @@ The library is exported as an ES module, so that you can use it Vue components, 
 
 ### CSS
 
-This project is using PostCSS to bring next generation CSS into the present.
+This project is using PostCSS to bring next generation CSS into the present. Further, we have added some plugins to enable sass like syntax, like variables or mixins.
 
-Add CSS files in `./_src/assets/css/`. Afterwards you can add the entry point in `./_src/data/css.js`. This will make the contents of the parsed file available in the [global data cascade](https://www.11ty.dev/docs/data-global/).
+Add CSS files in `./_src/assets/css/`. 11ty detects all files ending in `.css` in this folder and creates entry points for them. This will make the contents of the parsed file available in the [global data cascade](https://www.11ty.dev/docs/data-global/).
 
-💁 Compilation happens through `./_helper/compileCss.js`
+💁 Compilation happens through `./_helper/compileCss.js`.
 
 ## Tooling
 
