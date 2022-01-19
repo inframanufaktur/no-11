@@ -1,34 +1,10 @@
 const path = require('path')
 const fs = require('fs')
-const postcss = require('postcss')
-const postcssImport = require('postcss-import')
-const postcssCustomProperties = require('postcss-custom-properties')
-const precss = require('precss')
-const postcssMixins = require('postcss-mixins')
-const autoprefixer = require('autoprefixer')
-const postcssJitProps = require('postcss-jit-props')
-const OpenProps = require('open-props')
 const { minify } = require('csso')
 
+const { compiler } = require('./postcss')
+
 const STATIC_FOLDERS = require('./paths')
-const propertiesPath = path.join(
-  process.cwd(),
-  STATIC_FOLDERS.css,
-  'custom-properties.css',
-)
-
-let PLUGINS = [
-  postcssImport,
-  postcssMixins({
-    mixinsDir: path.join(__dirname, 'postcss/mixins/'),
-  }),
-  precss,
-  postcssCustomProperties({ importFrom: propertiesPath }),
-  postcssJitProps(OpenProps),
-  autoprefixer,
-]
-
-const compiler = postcss(PLUGINS)
 
 const IS_PROD = process.env.ELEVENTY_ENV === 'production'
 

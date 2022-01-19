@@ -3,7 +3,7 @@ const fs = require('fs')
 const { camelCase } = require('lodash')
 const { compileCss } = require(path.join(
   process.cwd(),
-  '_helper/compileCss.js',
+  '_helper/compile-css.js',
 ))
 const STATIC_FOLDERS = require(path.join(process.cwd(), '_helper/paths.js'))
 
