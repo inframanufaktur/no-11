@@ -1,6 +1,8 @@
 const Image = require('@11ty/eleventy-img')
 const { parseHTML } = require('linkedom')
 
+const getFullSource = require('../_helper/get-full-source')
+
 const defaultOptions = {
   widths: [140, 320, null],
   sizes: '25%',
@@ -9,17 +11,7 @@ const defaultOptions = {
   outputDir: './dist/img/',
 }
 
-/**
- * Check if the image starts with the remote upload path and set MEDIA_HOST if it does
- *
- * @param {String} orig
- * @returns
- */
-const getFullSource = (orig) => {
-  return orig.startsWith(process.env.MEDIA_ROOT_FOLDER)
-    ? `${process.env.MEDIA_HOST}${orig}`
-    : orig
-}
+const IS_PROD = process.env.ELVENTY_ENV === 'production'
 
 module.exports = {
   name: 'responsiveImages',
@@ -39,31 +31,39 @@ module.exports = {
 
       for (const img of images) {
         const src = img.getAttribute('src')
-        const { imageSizes: sizes, imageWidths } = img.dataset
+        const { imageSizes: sizes, imageWidths, imageFormats } = img.dataset
 
         // data-image-widths should be something along the lines of `data-image-widths="[300, 600, 900]"`
         const widths = imageWidths && JSON.parse(imageWidths)
+        // `data-image-formats` should be specified in the same format
+        // e.g. `data-image-formats="[avif, webp, png]"`
+        const formats = imageFormats && JSON.parse(imageFormats)
 
         const options = {
           ...defaultOptions,
           ...(sizes && { sizes }),
           ...(widths && { widths }),
+          ...(formats && { formats }),
         }
 
         const meta = await Image(getFullSource(src), options)
+        const origType = options.formats.includes('png') ? 'png' : 'jpeg'
 
-        const last = meta.jpeg[meta.jpeg.length - 1]
+        const last = meta[origType][meta[origType].length - 1]
 
         img.setAttribute('width', last.width)
         img.setAttribute('height', last.height)
-        img.setAttribute('src', meta.jpeg[0].url)
+        img.setAttribute('src', meta[origType][0].url)
         img.setAttribute('decoding', 'async')
         img.setAttribute('loading', 'lazy')
 
-        // they have done their job, we let them rest
-        img.removeAttribute('data-image-widths')
-        img.removeAttribute('data-image-sizes')
-        img.removeAttribute('data-process-image')
+        if (IS_PROD) {
+          // they have done their job, we let them rest
+          img.removeAttribute('data-image-widths')
+          img.removeAttribute('data-image-sizes')
+          img.removeAttribute('data-image-formats')
+          img.removeAttribute('data-process-image')
+        }
 
         img.outerHTML = `
           <picture>
