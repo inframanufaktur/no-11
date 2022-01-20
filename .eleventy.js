@@ -1,3 +1,6 @@
+const path = require('path')
+const del = require('del')
+
 const { ELEVENTY_ENV } = process.env
 
 const functions = require('./_functions')
@@ -48,6 +51,17 @@ module.exports = function (eleventyConfig) {
       eleventyConfig.addTransform(name, transform)
     })
   }
+
+  eleventyConfig.on('eleventy.before', async function () {
+    const dist = path.join(process.cwd(), 'dist')
+
+    const deletedDirectoryPaths = await del([`${dist}/**`, `!${dist}/img`])
+
+    console.log(
+      'eleventy.before: 🗑 Deleted `dist`.\n',
+      deletedDirectoryPaths.join('\n'),
+    )
+  })
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
 
