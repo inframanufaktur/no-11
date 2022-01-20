@@ -8,6 +8,7 @@ module.exports = {
     rollupOptions: {
       external: [
         'markdown-it',
+        'markdown-it-attrs',
         'markdown-it-anchor',
         'markdown-it-prism',
         'markdown-it-footnote',
