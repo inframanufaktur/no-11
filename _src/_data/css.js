@@ -11,8 +11,9 @@ const cssPath = path.join(process.cwd(), STATIC_FOLDERS.css)
 
 const partials = {}
 
-fs.readdirSync(cssPath).forEach(function (fileName) {
-  if (fileName.endsWith('.css')) {
+fs.readdirSync(cssPath)
+  .filter((fileName) => fileName.endsWith('.css'))
+  .forEach(function (fileName) {
     const property = camelCase(fileName.replace('.css', ''))
 
     Object.defineProperty(partials, property, {
@@ -21,7 +22,6 @@ fs.readdirSync(cssPath).forEach(function (fileName) {
       writable: true,
       configurable: true,
     })
-  }
-})
+  })
 
 module.exports = compileCss(partials)
