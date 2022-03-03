@@ -34,12 +34,10 @@ These are the default plugins.
 
 #### Base
 
-- @11ty/eleventy-plugin-vue
-- [Eleventy serverless](https://www.11ty.dev/docs/plugins/serverless/)
-
-#### Prod
-
-- eleventy-plugin-purgecss
+- [@11ty/eleventy-plugin-rss](https://www.11ty.dev/docs/plugins/rss/)
+- [@11ty/eleventy-plugin-syntaxhighlight](https://www.11ty.dev/docs/plugins/syntaxhighlight/)
+- [@11ty/eleventy-plugin-vue](https://github.com/11ty/eleventy-plugin-vue/)
+- [Render Plugin](https://www.11ty.dev/docs/plugins/render/)
 
 ### Shortcodes
 
