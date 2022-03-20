@@ -1,12 +1,15 @@
 module.exports = class {
   data() {
     return {
-      pagination: { data: 'css', size: 1 },
-      permalink: (data) => data.css[data.pagination.items[0]].permalink,
+      pagination: { data: 'css', size: 1, alias: 'cssEntry' },
+      layout: null,
+      permalink: (data) => {
+        return data.css[data.cssEntry].permalink
+      },
     }
   }
 
   render(data) {
-    return data.css[data.pagination.items[0]].parsed
+    return data.css[data.cssEntry].parsed
   }
 }
