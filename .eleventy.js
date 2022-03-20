@@ -24,8 +24,8 @@ module.exports = function (eleventyConfig) {
     })
   }
 
-  shortcodes.forEach((shortcode) => {
-    eleventyConfig.addShortcode(shortcode.name, shortcode.shortcodeFunction)
+  shortcodes.forEach(({ name, func }) => {
+    eleventyConfig.addShortcode(name, func)
   })
 
   functions.forEach(({ name, func }) => {

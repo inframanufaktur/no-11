@@ -1,15 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-const { camelCase } = require('lodash')
+const getFolderExports = require('../_helper/get-folder-exports')
 
-const functions = []
-
-fs.readdirSync(__dirname).forEach(function (fileName) {
-  if (fileName.endsWith('.js') && fileName !== 'index.js') {
-    const name = camelCase(fileName.replace('.js', ''))
-
-    functions.push({ name, func: require(path.join(__dirname, fileName)) })
-  }
-})
-
-module.exports = functions
+module.exports = getFolderExports(__dirname)

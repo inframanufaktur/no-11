@@ -1,5 +1,3 @@
-const inlineSvg = require('./inline-svg')
-const navLink = require('./nav-link')
-const metaRobots = require('./meta-robots')
+const getFolderExports = require('../_helper/get-folder-exports')
 
-module.exports = [inlineSvg, navLink, metaRobots]
+module.exports = getFolderExports(__dirname)
