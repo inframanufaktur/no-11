@@ -9,24 +9,21 @@ const defaultOptions = {
   outputDir: './dist/img/',
 }
 
-module.exports = {
-  name: 'responsiveImage',
-  func: async function (src, alt, sizes, imgAttrs = {}, options = {}) {
-    const fullSrc = getFullSource(src)
+module.exports = async function (src, alt, sizes, imgAttrs = {}, options = {}) {
+  const fullSrc = getFullSource(src)
 
-    let metadata = await Image(fullSrc, {
-      ...defaultOptions,
-      ...options,
-    })
+  let metadata = await Image(fullSrc, {
+    ...defaultOptions,
+    ...options,
+  })
 
-    let imageAttributes = {
-      alt,
-      sizes,
-      loading: 'lazy',
-      decoding: 'async',
-      ...imgAttrs,
-    }
+  let imageAttributes = {
+    alt,
+    sizes,
+    loading: 'lazy',
+    decoding: 'async',
+    ...imgAttrs,
+  }
 
-    return Image.generateHTML(metadata, imageAttributes)
-  },
+  return Image.generateHTML(metadata, imageAttributes)
 }
