@@ -1,6 +1,3 @@
-const responsiveImage = require('./responsive-image')
-
-module.exports = [responsiveImage]
 const path = require('path')
 const fs = require('fs')
 const { camelCase } = require('lodash')
