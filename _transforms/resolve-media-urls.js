@@ -13,7 +13,6 @@ const getFullSource = (orig) => {
 }
 
 module.exports = {
-  name: 'resolveMediaUrls',
   transform: function (content) {
     if (this.outputPath && this.outputPath.endsWith('.html')) {
       let { document } = parseHTML(content)

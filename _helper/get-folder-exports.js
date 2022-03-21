@@ -1,12 +1,13 @@
 const path = require('path')
-const fs = require('fs')
 const { camelCase } = require('lodash')
+const getFilesOfType = require('./get-files')
 
 module.exports = function getFolderExports(folder) {
   const functions = []
+  const files = getFilesOfType(folder)
 
-  fs.readdirSync(folder).forEach(function (fileName) {
-    if (fileName.endsWith('.js') && fileName !== 'index.js') {
+  files.forEach(function (fileName) {
+    if (fileName !== 'index.js') {
       const name = camelCase(fileName.replace('.js', ''))
 
       const func = require(path.join(folder, fileName))

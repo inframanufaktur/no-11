@@ -14,7 +14,6 @@ const defaultOptions = {
 const IS_PROD = process.env.ELVENTY_ENV === 'production'
 
 module.exports = {
-  name: 'responsiveImages',
   transform: async function (content) {
     // Basic implementation is based on this Gist: https://gist.github.com/Alexs7zzh/d92ae991ad05ed585d072074ea527b5c
     // We removed the `forEach` to leverage the core `Image` functionality.
