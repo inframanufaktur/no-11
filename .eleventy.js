@@ -57,10 +57,9 @@ module.exports = function (eleventyConfig) {
 
     const deletedDirectoryPaths = await del([`${dist}/**`, `!${dist}/img`])
 
-    console.log(
-      'eleventy.before: 🗑 Deleted `dist`.\n',
-      deletedDirectoryPaths.join('\n'),
-    )
+    if (deletedDirectoryPaths.length) {
+      console.log('eleventy.before: 🗑 Deleted `dist`.')
+    }
   })
 
   eleventyConfig.addLayoutAlias('base', 'layouts/base.njk')
