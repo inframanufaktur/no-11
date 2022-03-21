@@ -20,6 +20,12 @@ To serve the site run `npm run serve`. This will start a server at `http://local
 
 As we compile assets as part of the 11ty pipeline, the site will reload if you update the CSS or JS, or add new static assets.
 
+### Automatic module recognition
+
+We went a bit overboard, because going overboard is fun. No. 11 automatically recognises if you add new files to the `_functions_`, `_shortcodes`, and `_transforms` folders.
+
+The camel cased name of the file is the name of the function or shortcode.
+
 ### Plugins
 
 Configure 11ty plugins in `./_plugins` and add them to the array. You can initiate the plugin with all necessary options and export it:
