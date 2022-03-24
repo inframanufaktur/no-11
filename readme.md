@@ -12,6 +12,19 @@ You can fork this repo to build new websites. Use it as an upstream repo to get 
 
 While this template includes some optimisations, it aims to be as adaptable as possible.
 
+## Sponsoring
+
+We’ve made No. 11 better thanks to the fine folks at [Ultra Tendency](https://www.ultratendency.com) and their commitment to Open Source.
+
+!["Ultra Tendency – pioneering the future"](.github/img/sponsor-ut.png)
+
+## Built with No. 11
+
+The following projects utilize our starter:
+
+- [ultratendency.com](https://www.ultratendecy.com)
+- [ovl.design](https://www.ovl.design)
+
 ## 11ty
 
 ### Serve
