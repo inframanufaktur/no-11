@@ -4,6 +4,6 @@ const { version } = require(path.join(process.cwd(), 'package.json'))
 
 module.exports = {
   isPreview: process.env.PAGE_STATE !== 'production',
-  buildTime: Date.now(),
+  buildTime: new Date(),
   version,
 }
