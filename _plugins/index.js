@@ -1,10 +1,6 @@
-const render = require('./render')
-const rss = require('./rss')
-const sitemap = require('./sitemap')
-const syntaxHighlight = require('./syntax-highlight')
-const vue = require('./vue')
+const path = require('path')
+const getFilesOfType = require('../_helper/get-files')
 
-module.exports = {
-  always: [vue, render, rss, syntaxHighlight, sitemap],
-  prod: [],
-}
+module.exports = getFilesOfType(__dirname)
+  .filter((file) => file !== 'index.js')
+  .map((file) => require(path.join(__dirname, file)))
