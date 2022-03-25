@@ -11,6 +11,45 @@ const defaultOptions = {
   outputDir: './dist/img/',
 }
 
+function renderPictureHTML($el, meta, options) {
+  return `<picture>
+    ${options.formats
+      .map((format) => {
+        return `<source type="image/${format}" sizes="${
+          options.sizes
+        }" srcset="${meta[format].map((p) => p.srcset).join(', ')}">`
+      })
+      .join('\n')}
+    ${$el.outerHTML}
+  </picture>`
+}
+
+function setImgAttributes(img, meta, options) {
+  let origType = options.formats.includes('png') ? 'png' : 'jpeg'
+
+  if (img.getAttribute('src').endsWith('.gif')) {
+    origType = 'gif'
+  }
+
+  const last = meta[origType][meta[origType].length - 1]
+
+  img.setAttribute('width', last.width)
+  if (origType !== 'gif') {
+    img.setAttribute('height', last.height)
+  }
+  img.setAttribute('src', meta[origType][0].url)
+  img.setAttribute('decoding', 'async')
+  img.setAttribute('loading', 'lazy')
+
+  if (IS_PROD) {
+    // they have done their job, we let them rest
+    img.removeAttribute('data-image-widths')
+    img.removeAttribute('data-image-sizes')
+    img.removeAttribute('data-image-formats')
+    img.removeAttribute('data-process-image')
+  }
+}
+
 const IS_PROD = process.env.ELVENTY_ENV === 'production'
 
 module.exports = {
@@ -28,7 +67,33 @@ module.exports = {
         ...document.querySelectorAll('.md-content img'),
       ]
 
-      for (const img of images) {
+      const staticImages = images.filter(
+        (img) => !img.getAttribute('src').endsWith('.gif'),
+      )
+
+      const gifs = images.filter((img) =>
+        img.getAttribute('src').endsWith('.gif'),
+      )
+
+      for (const gif of gifs) {
+        const src = gif.getAttribute('src')
+
+        const options = {
+          ...defaultOptions,
+          formats: ['webp', 'gif'],
+          sharpOptions: {
+            animated: true,
+          },
+        }
+
+        const meta = await Image(getFullSource(src), options)
+
+        setImgAttributes(gif, meta, options)
+
+        gif.outerHTML = renderPictureHTML(gif, meta, options)
+      }
+
+      for (const img of staticImages) {
         const src = img.getAttribute('src')
         const { imageSizes: sizes, imageWidths, imageFormats } = img.dataset
 
@@ -46,35 +111,10 @@ module.exports = {
         }
 
         const meta = await Image(getFullSource(src), options)
-        const origType = options.formats.includes('png') ? 'png' : 'jpeg'
 
-        const last = meta[origType][meta[origType].length - 1]
+        setImgAttributes(img, meta, options)
 
-        img.setAttribute('width', last.width)
-        img.setAttribute('height', last.height)
-        img.setAttribute('src', meta[origType][0].url)
-        img.setAttribute('decoding', 'async')
-        img.setAttribute('loading', 'lazy')
-
-        if (IS_PROD) {
-          // they have done their job, we let them rest
-          img.removeAttribute('data-image-widths')
-          img.removeAttribute('data-image-sizes')
-          img.removeAttribute('data-image-formats')
-          img.removeAttribute('data-process-image')
-        }
-
-        img.outerHTML = `
-          <picture>
-            ${options.formats
-              .map((format) => {
-                return `<source type="image/${format}" sizes="${
-                  options.sizes
-                }" srcset="${meta[format].map((p) => p.srcset).join(', ')}">`
-              })
-              .join('\n')}
-            ${img.outerHTML}
-          </picture>`
+        img.outerHTML = renderPictureHTML(img, meta, options)
       }
 
       return `<!DOCTYPE html>${document.documentElement.outerHTML}`
