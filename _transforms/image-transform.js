@@ -5,7 +5,7 @@ const getFullSource = require('../_helper/get-full-source')
 
 const defaultOptions = {
   widths: [140, 320, null],
-  sizes: '25%',
+  sizes: process.env.CONTENT_IMAGE_SIZES || '100%',
   formats: ['avif', 'webp', 'jpeg'],
   urlPath: '/img/',
   outputDir: './dist/img/',
