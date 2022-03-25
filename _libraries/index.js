@@ -1,3 +1,3 @@
-const { default: markdown } = import('./markdown.mjs')
+const md = require('./markdown.js')
 
-module.exports = [{ name: 'md', library: markdown }]
+module.exports = [{ name: 'md', library: md }]
