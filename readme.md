@@ -14,7 +14,7 @@ While this template includes some optimisations, it aims to be as adaptable as p
 
 ## Sponsoring
 
-We’ve made No. 11 better thanks to the fine folks at [Ultra Tendency](https://www.ultratendency.com) and their commitment to Open.
+We’ve made No. 11 better thanks to the fine folks at [Ultra Tendency](https://www.ultratendency.com) and their commitment to Open Source.
 
 !["Ultra Tendency – pioneering the future"](.github/img/sponsor-ut.jpg)
 
