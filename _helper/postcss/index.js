@@ -17,6 +17,7 @@ let PLUGINS = [
   }),
   require('postcss-import'),
   require('postcss-nested'),
+  require('postcss-custom-properties')({ preserve: true }),
   postcssCustomProperties({ importFrom: propertiesPath }),
   postcssJitProps(OpenProps),
   require('autoprefixer'),
