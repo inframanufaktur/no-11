@@ -2,6 +2,11 @@
   display: contents;
 }
 
+:where(source) {
+  /* as we do not display picture elements, we need to take source elements out of the flow too. without this declaration source will create, e.g., white space in flex layouts */
+  display: none;
+}
+
 :where(img) {
   display: inline-block;
   object-fit: cover;
