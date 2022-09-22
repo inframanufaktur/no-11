@@ -13,7 +13,7 @@
     "lint:js": "eslint \"**/*.{js,vue,mjs}\" --ignore-pattern 'node_modules/**/*' --fix",
     "serve": "ELEVENTY_ENV=development eleventy --serve --quiet --port 7777",
     "test": "ava",
-    "prepare": "husky install"
+    "prepare": "node scripts/prepare.js"
   },
   "engines": {
     "node": "16"
