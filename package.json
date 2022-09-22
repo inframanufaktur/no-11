@@ -1,5 +1,5 @@
 {
-  "name": "ut-11ty-base",
+  "name": "no-11",
   "version": "0.0.1",
   "description": "Starter template for 11ty builds",
   "main": "index.js",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/inframanufaktur/ut-11ty-base.git"
+    "url": "git+ssh://git@github.com/inframanufaktur/no-11.git"
   },
   "author": "ovl",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/inframanufaktur/ut-11ty-base/issues"
+    "url": "https://github.com/inframanufaktur/no-11/issues"
   },
-  "homepage": "https://github.com/inframanufaktur/ut-11ty-base#readme",
+  "homepage": "https://github.com/inframanufaktur/no-11#readme",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.1",
     "@11ty/eleventy-fetch": "^3.0.0",
