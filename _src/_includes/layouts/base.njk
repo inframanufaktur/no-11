@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>{{ meta.title }}</title>
+    <title>{{ title or meta.title }}</title>
 
     {% metaRobots %}
 
@@ -16,7 +16,15 @@
     </style>
   </head>
   <body>
+    <header class="main-header">
+      <nav>
+        <a href="/">Übersicht</a>
+      </nav>
+    </header>
     <main class="{{ layoutClass }}">
+      {% if title %}
+      <h1>{{ title }}</h1>
+      {% endif %}
       {{ content | safe }}
     </main>
   </body>
