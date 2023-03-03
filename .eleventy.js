@@ -18,10 +18,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(require('./_templates'))
 
-  eleventyConfig.addFilter('niceDate', function (date) {
-    return Intl.DateTimeFormat('de').format(date)
-  })
-
   eleventyConfig.on('eleventy.before', async function () {
     const dist = path.join(process.cwd(), 'dist')
 

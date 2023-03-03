@@ -6,14 +6,5 @@ pageCSS: home
 ---
 
 <main id="main" class="content-home" tabindex="-1">
-  <h1 class="main-headline">Texte über Techno</h1>
-  <ul>
-    {% for post in collections.text %}
-    <li>
-      <a href="{{ post.data.permalink }}"
-        >{{ post.data.title }} – {{ post.date | niceDate }}</a
-      >
-    </li>
-    {% endfor %}
-  </ul>
+  <h1 class="main-headline">Hello.</h1>
 </main>

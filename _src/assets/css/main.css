@@ -3,28 +3,3 @@
 @import './0-base/_aspect-ratio.pcss';
 @import './0-base/_a.pcss';
 @import './0-base/_img.pcss';
-
-html {
-  --text-1: var(--gray-2);
-  --text-2: var(--gray-3);
-  --link: var(--pink-3);
-
-  background-color: var(--gray-9);
-}
-
-body {
-  padding: var(--size-6);
-}
-
-.main-header {
-  margin-bottom: var(--size-5);
-
-  & a {
-    font-weight: bold;
-    text-decoration: none;
-  }
-}
-
-h1 {
-  line-height: 1.2;
-}
