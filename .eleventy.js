@@ -3,6 +3,8 @@ const del = require('del')
 
 const STATIC_FOLDERS = require('./_helper/paths')
 
+const IS_PROD = process.env.ELEVENTY_ENV === 'production'
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(require('./_plugins'))
 
@@ -13,6 +15,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(require('./_libraries'))
 
   eleventyConfig.addPlugin(require('./_transforms'))
+
+  eleventyConfig.addPlugin(require('./_templates'))
 
   eleventyConfig.on('eleventy.before', async function () {
     const dist = path.join(process.cwd(), 'dist')
