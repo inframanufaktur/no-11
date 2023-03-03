@@ -1,44 +1,18 @@
 const path = require('path')
 const del = require('del')
 
-const { ELEVENTY_ENV } = process.env
-
-const functions = require('./_functions')
-const plugins = require('./_plugins')
-const shortcodes = require('./_shortcodes')
-const libraries = require('./_libraries')
-const transforms = require('./_transforms')
-
 const STATIC_FOLDERS = require('./_helper/paths')
 
-const IS_PROD = ELEVENTY_ENV === 'production'
-
 module.exports = function (eleventyConfig) {
-  plugins.forEach((plugin) => {
-    eleventyConfig.addPlugin(plugin.plugin, plugin.pluginOptions || {})
-  })
+  eleventyConfig.addPlugin(require('./_plugins'))
 
-  shortcodes.forEach(({ name, func }) => {
-    eleventyConfig.addShortcode(name, func)
-  })
+  eleventyConfig.addPlugin(require('./_shortcodes'))
 
-  functions.forEach(({ name, func }) => {
-    eleventyConfig.addJavaScriptFunction(name, func)
-  })
+  eleventyConfig.addPlugin(require('./_functions'))
 
-  libraries.forEach(({ name, library }) => {
-    eleventyConfig.setLibrary(name, library)
-  })
+  eleventyConfig.addPlugin(require('./_libraries'))
 
-  transforms.base.forEach(({ name, transform }) => {
-    eleventyConfig.addTransform(name, transform)
-  })
-
-  if (IS_PROD) {
-    transforms.prod.forEach(({ name, transform }) => {
-      eleventyConfig.addTransform(name, transform)
-    })
-  }
+  eleventyConfig.addPlugin(require('./_transforms'))
 
   eleventyConfig.on('eleventy.before', async function () {
     const dist = path.join(process.cwd(), 'dist')
